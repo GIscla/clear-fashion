@@ -18,6 +18,8 @@ async function sandbox (eshop = 'https://www.dedicatedbrand.com/en/men/news') {
   }
 }
 
+#trus
+
 async function sandbox2 (eshop = 'https://adresse.paris/630-toute-la-collection') {
   try {
     console.log(`🕵️‍♀️  browsing ${eshop} source`);
