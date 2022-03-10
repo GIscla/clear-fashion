@@ -8,6 +8,7 @@ let currentPagination = {};
 // instantiate the selectors
 const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
+const selectBrand = document.querySelector('#brand-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
 
@@ -45,6 +46,60 @@ const fetchProducts = async (page = 1, size = 12) => {
     return {currentProducts, currentPagination};
   }
 };
+
+/*
+Feature 2
+I want to filter by brands name
+So that I can browse product for a specific brand
+
+Feature 3
+I want to filter by recent products
+So that I can browse the new released products (less than 2 weeks)
+
+Feature 4
+I want to filter by reasonable price
+So that I can buy affordable product i.e less than 50€
+
+Feature 5
+I want to sort by price
+So that I can easily identify cheapest and expensive products
+
+Feature 6
+I want to sort by price
+So that I can easily identify recent and old products
+
+Feature 8
+I want to indicate the total number of products
+So that I can understand how many products is available
+
+Feature 9
+I want to indicate the total number of recent products
+So that I can understand how many new products are available
+
+Feature 10
+I want to indicate the p50, p90 and p95 price value
+So that I can understand the price values of the products
+
+Feature 11
+I want to indicate the last released date
+So that I can understand if we have new products
+
+Feature 12
+I want to open product link in a new page
+So that I can buy the product easily
+
+Feature 13
+I want to save a product as favorite
+So that I can retrieve this product later
+
+Feature 14
+I want to filter by favorite products
+So that I can load only my favorite products
+
+Feature 15
+I want to parse a usable and pleasant web page
+So that I can find valuable and useful content
+ */
 
 /**
  * Render list of products
@@ -122,3 +177,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   setCurrentProducts(products);
   render(currentProducts, currentPagination);
 });
+
+selectPage.addEventListener('change', async(event)=>{
+  const products = await fetchProducts(parseInt(event.target.value), currentPagination.pageSize);
+
+  setCurrentProducts(products);
+  render(currentProducts, currentPagination);
+});
+
+/*
+selectBrand.addEventListener('change', async(event)=>{
+  const products = await fetchProducts(parseInt(event.target.value), currentPagination.pageSize);
+
+  setCurrentProducts(products);
+  render(currentProducts, currentPagination);
+});
+*/
